@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyecto Arcade desarrollado con HTML5 Canvas, CSS3 y JavaScript nativo bajo arquitectura MVC.">
+  <title>Arcade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <main class="arcade-container">
+    <header class="arcade-header">
+      <div class="brand">
+        <span class="badge">ARCADE</span>
+        <h1>Titulo de juego </h1>
+      </div>
+
+      <section class="hud" aria-label="Indicadores de partida">
+        <div class="hud-item">
+          <span class="hud-label">PUNTOS</span>
+          <output id="score-display" class="hud-value">0000</output>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">NIVEL</span>
+          <output id="level-display" class="hud-value">1</output>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">VIDAS</span>
+          <output id="lives-display" class="hud-value">3</output>
+        </div>
+      </section>
+    </header>
+    <section class="viewport-wrapper" aria-label="Área de juego">
+      <canvas id="game-canvas" width="800" height="500">
+        Tu navegador no soporta la etiqueta HTML5 Canvas. Actualízalo para jugar.
+      </canvas>
+      <div id="game-overlay" class="overlay active" role="dialog" aria-live="polite">
+        <h2 id="overlay-title">¿LISTO PARA JUGAR?</h2>
+        <p id="overlay-subtitle">Ajusta la dificultad y pulsa Iniciar para comenzar la partida.</p>
+        <form id="settings-form" class="settings-panel">
+          <label for="difficulty-select">
+            Dificultad:
+            <select id="difficulty-select" name="difficulty">
+              <option value="easy">Fácil</option>
+              <option value="normal" selected>Normal</option>
+              <option value="hard">Dificil</option>
+            </select>
+          </label>
+        </form>
+        <button type="button" id="btn-overlay-start" class="btn btn-primary">
+          INICIAR PARTIDA
+        </button>
+      </div>
+    </section>
+
+    <footer class="arcade-controls">
+      <div class="control-group">
+        <button type="button" id="btn-start" class="btn btn-primary">Iniciar</button>
+        <button type="button" id="btn-pause" class="btn btn-secondary" disabled>Pausar</button>
+        <button type="button" id="btn-stop" class="btn btn-danger" disabled>Finalizar</button>
+      </div>
+
+      <button type="button" id="btn-help" class="btn btn-outline" aria-haspopup="dialog">
+        ? Reglas y Ayuda
+      </button>
+    </footer>
+
+  </main>
+
+  <!-- Ventana modal nativa (<dialog>) para las reglas del juego -->
+  <dialog id="help-modal" class="arcade-modal">
+    <article class="modal-content">
+      <header class="modal-header">
+        <h2>Reglas del Juego</h2>
+        <button type="button" id="btn-close-help" class="btn-icon" aria-label="Cerrar ayuda">&times;</button>
+      </header>
+      <div class="modal-body">
+        <p>Insertar aqui instrucciones del juego, controles de ejemplo, podemos cambiarlo en el futuro.</p>
+        <ul>
+          <li><strong>Movimiento:</strong> Usa las teclas <kbd>←</kbd> <kbd>→</kbd> o <kbd>A</kbd> <kbd>D</kbd> para desplazarte.</li>
+          <li><strong>Acción:</strong> Pulsa <kbd>Espacio</kbd> o <kbd>W</kbd> para (accion).</li>
+          <li><strong>Pausa rápida:</strong> Pulsa la tecla <kbd>P</kbd> en cualquier momento.</li>
+        </ul>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" id="btn-accept-help" class="btn btn-primary">Entendido</button>
+      </footer>
+    </article>
+  </dialog>
+
+</body>
+</html>
